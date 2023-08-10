@@ -2,9 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 import Landing from './views/landing/landing';
 
 const RoutesApp = () => {
+	console.log('render');
+
 	return (
 		<Routes>
-			<Route path='/' Component={Landing} />
+			<Route caseSensitive path='/' element={<Landing />} />
 		</Routes>
 	);
 };
