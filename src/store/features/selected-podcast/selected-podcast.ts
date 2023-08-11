@@ -38,11 +38,17 @@ export const podcastsListSlice = createSlice({
 		setEpisodes: (state, action: PayloadAction<IPodcastEpisode[]>) => {
 			state.episodes = [...action.payload];
 		},
+		clearPodcast: (state) => {
+			state.item = { ...defaultPodcast };
+			state.totalEpisodes = 0;
+			state.episodes = [];
+		},
 	},
 });
 
 const { actions, reducer } = podcastsListSlice;
 
-export const { setPodcast, setEpisodes, setTotalEpisodes } = actions;
+export const { clearPodcast, setPodcast, setEpisodes, setTotalEpisodes } =
+	actions;
 
 export default reducer;

@@ -10,8 +10,7 @@ export const useAskForPopularPodcasts = () => {
 	const runUseApiRequest = useApiRequest();
 	const dispatch = useAppDispatch();
 	const callback = (data: any) => {
-		const aux = JSON.parse(data.contents);
-		const items: IPodcastItem[] = aux.feed.entry?.map((p: any) => {
+		const items: IPodcastItem[] = data.feed.entry?.map((p: any) => {
 			return {
 				id: parseInt(p.id.attributes['im:id']),
 				image: p['im:image'][p['im:image'].length - 1].label,

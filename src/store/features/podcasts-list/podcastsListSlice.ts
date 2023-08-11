@@ -1,12 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-
-export interface IPodcastItem {
-	id: number;
-	image: string;
-	title: string;
-	author: string;
-}
+import { IPodcastItem } from '../../../common/interfaces/podcast-item';
 
 // Define a type for the slice state
 interface IPodcastsListState {

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { IPodcastItem } from '../../common/interfaces/podcast-item';
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 interface ICPodcastInfo extends IPodcastItem {
 	className?: string;
 	$boxShadow: string;
@@ -11,19 +12,27 @@ export const CPodcastInfo: FC<ICPodcastInfo> = ({
 	image,
 	title,
 	description,
+	id,
 }) => {
+	const path = `/podcast/${id}`;
 	return (
 		<div className={className}>
 			<div>
-				<img src={image} alt='Podcast image' title={title} />
+				<Link to={path}>
+					<img src={image} alt='Podcast image' title={title} />
+				</Link>
 			</div>
 			<hr />
 			<div>
 				<p>
-					<b>{title}</b>
+					<Link to={path}>
+						<b>{title}</b>
+					</Link>
 				</p>
 				<p>
-					<i>by {author}</i>
+					<Link to={path}>
+						<i>by {author}</i>
+					</Link>
 				</p>
 			</div>
 			<hr />

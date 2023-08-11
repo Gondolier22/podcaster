@@ -13,12 +13,9 @@ export const useGetPodcastEpisodes = () => {
 	const runUseApiRequest = useApiRequest();
 	const podcasts = useAppSelector((state) => state.podcastsList.items);
 	const callback = (data: any) => {
-		const aux = JSON.parse(data.contents);
-		console.log(aux);
-
-		dispatch(setTotalEpisodes(aux.resultCount));
+		dispatch(setTotalEpisodes(data.resultCount));
 		const episodes: IPodcastEpisode[] =
-			aux.results?.map((r: any) => {
+			data.results?.map((r: any) => {
 				return {
 					id: r.trackId,
 					title: r.trackName,

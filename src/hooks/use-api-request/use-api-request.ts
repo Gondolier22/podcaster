@@ -19,7 +19,7 @@ export const useApiRequest = () => {
 			const response = await axios({
 				method,
 				data: body,
-				url: `https://api.allorigins.win/get?url=${path}`,
+				url: `https://corsproxy.io/?${encodeURIComponent(path)}`,
 			});
 			callback(response.data);
 		} catch (e) {
