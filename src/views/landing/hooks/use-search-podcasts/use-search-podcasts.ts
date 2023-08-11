@@ -1,4 +1,4 @@
-import { setFilteredList } from '../../../../store/features/podcastsList/podcastsListSlice';
+import { setFilteredList } from '../../../../store/features/podcasts-list/podcastsListSlice';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 
 export const useSearchPodcasts = () => {

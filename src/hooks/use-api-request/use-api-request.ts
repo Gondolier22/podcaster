@@ -16,7 +16,11 @@ export const useApiRequest = () => {
 	const run = async ({ callback, path, body, method }: TUseApiRequest) => {
 		try {
 			dispatch(startLoading());
-			const response = await axios({ method, data: body, url: path });
+			const response = await axios({
+				method,
+				data: body,
+				url: `https://api.allorigins.win/get?url=${path}`,
+			});
 			callback(response.data);
 		} catch (e) {
 			console.error(e);

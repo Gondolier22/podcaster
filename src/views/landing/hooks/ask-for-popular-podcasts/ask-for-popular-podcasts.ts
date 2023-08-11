@@ -1,21 +1,23 @@
 import {
-	IPodcastItem,
 	setFilteredList,
 	setList,
-} from '../../../../store/features/podcastsList/podcastsListSlice';
+} from '../../../../store/features/podcasts-list/podcastsListSlice';
 import { useAppDispatch } from '../../../../store/hooks';
 import { useApiRequest } from '../../../../hooks/use-api-request/use-api-request';
+import { IPodcastItem } from '../../../../common/interfaces/podcast-item';
 
 export const useAskForPopularPodcasts = () => {
 	const runUseApiRequest = useApiRequest();
 	const dispatch = useAppDispatch();
 	const callback = (data: any) => {
-		const items: IPodcastItem[] = data.feed.entry?.map((p: any) => {
+		const aux = JSON.parse(data.contents);
+		const items: IPodcastItem[] = aux.feed.entry?.map((p: any) => {
 			return {
-				id: p.id.attributes['im:id'],
+				id: parseInt(p.id.attributes['im:id']),
 				image: p['im:image'][p['im:image'].length - 1].label,
 				author: p['im:artist'].label,
 				title: p.title.label.split('-')[0]?.trim(),
+				description: p.summary?.label,
 			};
 		});
 		dispatch(setList(items));

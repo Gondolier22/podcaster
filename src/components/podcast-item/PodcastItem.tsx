@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { IPodcastItem } from '../../store/features/podcastsList/podcastsListSlice';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { SAvatar } from '../avatar/Avatar';
+import { IPodcastItem } from '../../common/interfaces/podcast-item';
 
 interface ICPodcastItem extends IPodcastItem {
 	className?: string;
+	$boxShadow: string;
 }
 
 export const CPodcastItem: FC<ICPodcastItem> = ({
@@ -39,8 +40,8 @@ export const SCPodcastItem = styled(CPodcastItem)`
 		background-color: transparent;
 		width: 200px;
 		margin: 3rem;
-		border: 2px solid lightgrey;
-
+		box-shadow: ${({ $boxShadow }) => $boxShadow};
+		border: none;
 		& > legend {
 			text-align: center;
 		}
