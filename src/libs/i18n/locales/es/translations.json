@@ -1,0 +1,11 @@
+{
+  "podcaster": {
+    "title": "Podcaster",
+    "description": "Una aplicación para descubrir y escuchar podcasts. Utiliza la API de Podcast Index para obtener episodios y mostrar información detallada sobre cada podcast.",
+    "home": {
+      "title": "Bievenido a la lista de podcasts",
+      "description": "Explora los últimos episodios de tus podcasts favoritos y descubre nuevos contenidos.",
+      "searchPlaceholder": "Buscar podcasts por nombre o autor"
+    }
+  }
+}
