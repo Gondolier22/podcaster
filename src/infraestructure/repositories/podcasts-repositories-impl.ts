@@ -1,7 +1,7 @@
 import type { Episode } from "../../domain/entities/episode";
 import type { Podcast } from "../../domain/entities/podcast";
 import type { PodcastRepository } from "../../domain/repositories/podcast-repository";
-import axiosPodcaster from "../../lib/axios";
+import axiosPodcaster from "../../libs/axios";
 import mapToEpisodesList from "../adapters/map-to-episodes-list";
 import mapToPodcastsList from "../adapters/map-to-podcasts-list";
 

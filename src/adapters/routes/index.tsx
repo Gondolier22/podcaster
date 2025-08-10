@@ -1,28 +1,26 @@
-import ErrorComponent from "@/shared/components/error-component";
 import Spinner from "@/shared/components/spinner";
 import { lazy, Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-const HomePage = lazy(() => import("../views/home"));
-const PodscastDetailPage = lazy(() => import("../views/detail"));
-const EpisodeDetail = lazy(() => import("../views/episode-detail"));
+const Landing = lazy(() => import("@/adapters/views/home"));
+const SPodcastDetail = lazy(() => import("@/adapters/views/detail"));
+const SPodcastEpisode = lazy(() => import("@/adapters/views/episode-detail"));
+const MainLayout = lazy(() => import("@/layouts/main-layout"));
 
-const PodcasterRouter = () => {
+const RoutesApp = () => {
   return (
     <Suspense fallback={<Spinner />}>
-      <ErrorBoundary FallbackComponent={ErrorComponent}>
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="podcast/:id" element={<PodscastDetailPage />} />
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Landing />} />
+          <Route path="podcast/:podcastId" element={<SPodcastDetail />} />
           <Route
-            path="podcast/:id/episode/:episodeId"
-            element={<EpisodeDetail />}
+            path="podcast/:podcastId/episode/:episodeId"
+            element={<SPodcastEpisode />}
           />
-        </Routes>
-      </ErrorBoundary>
+        </Route>
+      </Routes>
     </Suspense>
   );
 };
-
-export default PodcasterRouter;
+export default RoutesApp;
